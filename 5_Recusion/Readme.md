@@ -50,6 +50,22 @@ findMax([1, 2, 3, 4])
 => findMax([3, 4])
 ```
 
+**Exercise:** Fibonacci numbers
+The nth Fibonacci number is the sum of the two previous Fibonacci numbers:
+$$
+f_n = f_{n-1} + f_{n - 2}, \text{ where } f_0 = 0, f_1 = 1.
+$$
+Write a function that calculate the Fibonacci numbers:
+
+```Python
+# fib(5) => 5
+# fib(10) => 55
+# fib(35) => 9,227,465
+def fib(n):
+
+```
+
+
 ## Accumulative Recursion
 Consider the another way to implement findMax.
 ```Python
@@ -90,25 +106,26 @@ def fn(...):
     acc_helper(initial acc, initial remaining, ...)
 ```
 
-**Exercise:** Fibonacci numbers
-The nth Fibonacci number is the sum of the two previous Fibonacci numbers:
-$$
-f_n = f_{n-1} + f_{n - 2}, \text{ where } f_0 = 0, f_1 = 1.
-$$
-Write a function that calculate the Fibonacci numbers:
 
-```Python
-# fib(5) => 5
-# fib(10) => 55
-# fib(35) => 9,227,465
-def fib(n):
-
-```
 **Exercise:** Reversing a List
 ```Python
 # reverse([0]) => 0
 # reverse([1, 3, 5, 2]) => [2, 5, 3, 1]
-def reverse(n):
+def reverse_structure(lst):
+    if (len(lst) <= 1):
+        return lst
+    else:
+        return [lst[-1]] + reverse_structure(lst[:-1])
+    
+def reverse_helper(acc, lst, pos):
+    if pos < 0:
+        return acc
+    else:
+        acc.append(lst[pos])
+        return reverse_helper(acc, lst, pos - 1)
+
+def reverse_acc(lst):
+    return reverse_helper([], lst, len(lst) - 1)
 
 ```
 
